@@ -4,26 +4,38 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/generate-sounds.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-sounds": "node scripts/generate-sounds.js"
   },
   "dependencies": {
-    "@fontsource/ibm-plex-sans": "^5.2.6",
-    "@fontsource/inter": "^5.2.6",
-    "@fontsource/poppins": "^5.2.6",
+    "@fontsource/orbitron": "^5.0.0",
+    "@fontsource/space-mono": "^5.0.0",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
-    "framer-motion": "^12.23.6",
+    "@react-three/drei": "^10.6.1",
+    "@react-three/fiber": "^9.2.0",
+    "@react-three/postprocessing": "^2.15.1",
+    "framer-motion": "^12.23.9",
+    "gsap": "^3.13.0",
     "next": "15.4.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-spring": "^9.7.3",
+    "three": "^0.178.0",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.159.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
