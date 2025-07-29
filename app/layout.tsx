@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import "@fontsource/orbitron/400.css";
-import "@fontsource/orbitron/700.css";
-import "@fontsource/space-mono/400.css";
-import "@fontsource/space-mono/700.css";
+import "@fontsource/inter/latin.css";
+import "@fontsource/poppins/latin.css";
+import "@fontsource/ibm-plex-sans/latin.css";
 import "./globals.css";
-import { Providers } from "./providers";
+import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
-  title: "Mistri | Next-Gen Tech Stack Analysis with Agentic AI",
-  description: "Experience the future of tech stack analysis with Mistri's agentic AI platform. Visualize, optimize, and understand your entire tech ecosystem.",
+  title: "Mistri | Understand and Improve Your Tech Stack with AI",
+  description: "Mistri uses Agentic AI to analyze, visualize, and optimize your code and cloud systems.",
 };
 
 export default function RootLayout({
@@ -17,15 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className="font-orbitron antialiased min-h-screen bg-cyber-black text-white overflow-x-hidden"
-        style={{ 
-          fontFamily: 'Orbitron, Space Mono, system-ui, sans-serif',
-          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 245, 0.1) 0%, transparent 50%)',
-        }}
+        className="font-sans antialiased min-h-screen bg-background text-foreground"
+        style={{ fontFamily: 'Inter, Poppins, IBM Plex Sans, Arial, sans-serif' }}
       >
-        <Providers>{children}</Providers>
+        <Navbar/>
+        {children}
       </body>
     </html>
   );

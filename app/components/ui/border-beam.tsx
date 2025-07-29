@@ -1,0 +1,33 @@
+"use client";
+
+import { cn } from "../../lib/utils";
+import React from "react";
+
+interface BorderBeamProps {
+  size?: number;
+  duration?: number;
+  delay?: number;
+  className?: string;
+}
+
+export const BorderBeam = ({
+  size = 250,
+  duration = 12,
+  delay = 0,
+  className,
+}: BorderBeamProps) => {
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 rounded-[inherit] [mask:linear-gradient(white,transparent)] before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:animate-border-beam before:bg-[length:var(--border-beam-size)_100%] before:bg-[position:var(--border-beam-position)_0] before:bg-[position:var(--border-beam-position)_100%] before:bg-[position:var(--border-beam-position)_200%] before:bg-[position:var(--border-beam-position)_300%] before:bg-[position:var(--border-beam-position)_400%] before:bg-[position:var(--border-beam-position)_500%] before:bg-[position:var(--border-beam-position)_600%] before:bg-[position:var(--border-beam-position)_700%] before:bg-[position:var(--border-beam-position)_800%] before:bg-[position:var(--border-beam-position)_900%] before:bg-[position:var(--border-beam-position)_1000%] before:bg-[position:var(--border-beam-position)_1100%] before:bg-[position:var(--border-beam-position)_1200%] before:bg-[position:var(--border-beam-position)_1300%] before:bg-[position:var(--border-beam-position)_1400%] before:bg-[position:var(--border-beam-position)_1500%] before:bg-[position:var(--border-beam-position)_1600%] before:bg-[position:var(--border-beam-position)_1700%] before:bg-[position:var(--border-beam-position)_1800%] before:bg-[position:var(--border-beam-position)_1900%] before:bg-[position:var(--border-beam-position)_2000%] before:bg-[position:var(--border-beam-position)_2100%] before:bg-[position:var(--border-beam-position)_2200%] before:bg-[position:var(--border-beam-position)_2300%] before:bg-[position:var(--border-beam-position)_2400%] before:bg-[position:var(--border-beam-position)_2500%] before:bg-[position:var(--border-beam-position)_2600%] before:bg-[position:var(--border-beam-position)_2700%] before:bg-[position:var(--border-beam-position)_2800%] before:bg-[position:var(--border-beam-position)_2900%] before:bg-[position:var(--border-beam-position)_3000%] before:bg-[position:var(--border-beam-position)_3100%] before:bg-[position:var(--border-beam-position)_3200%] before:bg-[position:var(--border-beam-position)_3300%] before:bg-[position:var(--border-beam-position)_3400%] before:bg-[position:var(--border-beam-position)_3500%] before:bg-[position:var(--border-beam-position)_3600%] before:bg-[position:var(--border-beam-position)_3700%] before:bg-[position:var(--border-beam-position)_3800%] before:bg-[position:var(--border-beam-position)_3900%] before:bg-[position:var(--border-beam-position)_4000%] before:bg-[position:var(--border-beam-position)_4100%] before:bg-[position:var(--border-beam-position)_4200%] before:bg-[position:var(--border-beam-position)_4300%] before:bg-[position:var(--border-beam-position)_4400%] before:bg-[position:var(--border-beam-position)_4500%] before:bg-[position:var(--border-beam-position)_4600%] before:bg-[position:var(--border-beam-position)_4700%] before:bg-[position:var(--border-beam-position)_4800%] before:bg-[position:var(--border-beam-position)_4900%] before:bg-[position:var(--border-beam-position)_5000%] before:bg-[position:var(--border-beam-position)_5100%] before:bg-[position:var(--border-beam-position)_5200%] before:bg-[position:var(--border-beam-position)_5300%] before:bg-[position:var(--border-beam-position)_5400%] before:bg-[position:var(--border-beam-position)_5500%] before:bg-[position:var(--border-beam-position)_5600%] before:bg-[position:var(--border-beam-position)_5700%] before:bg-[position:var(--border-beam-position)_5800%] before:bg-[position:var(--border-beam-position)_5900%] before:bg-[position:var(--border-beam-position)_6000%] before:bg-[position:var(--border-beam-position)_6100%] before:bg-[position:var(--border-beam-position)_6200%] before:bg-[position:var(--border-beam-position)_6300%] before:bg-[position:var(--border-beam-position)_6400%] before:bg-[position:var(--border-beam-position)_6500%] before:bg-[position:var(--border-beam-position)_6600%] before:bg-[position:var(--border-beam-position)_6700%] before:bg-[position:var(--border-beam-position)_6800%] before:bg-[position:var(--border-beam-position)_6900%] before:bg-[position:var(--border-beam-position)_7000%] before:bg-[position:var(--border-beam-position)_7100%] before:bg-[position:var(--border-beam-position)_7200%] before:bg-[position:var(--border-beam-position)_7300%] before:bg-[position:var(--border-beam-position)_7400%] before:bg-[position:var(--border-beam-position)_7500%] before:bg-[position:var(--border-beam-position)_7600%] before:bg-[position:var(--border-beam-position)_7700%] before:bg-[position:var(--border-beam-position)_7800%] before:bg-[position:var(--border-beam-position)_7900%] before:bg-[position:var(--border-beam-position)_8000%] before:bg-[position:var(--border-beam-position)_8100%] before:bg-[position:var(--border-beam-position)_8200%] before:bg-[position:var(--border-beam-position)_8300%] before:bg-[position:var(--border-beam-position)_8400%] before:bg-[position:var(--border-beam-position)_8500%] before:bg-[position:var(--border-beam-position)_8600%] before:bg-[position:var(--border-beam-position)_8700%] before:bg-[position:var(--border-beam-position)_8800%] before:bg-[position:var(--border-beam-position)_8900%] before:bg-[position:var(--border-beam-position)_9000%] before:bg-[position:var(--border-beam-position)_9100%] before:bg-[position:var(--border-beam-position)_9200%] before:bg-[position:var(--border-beam-position)_9300%] before:bg-[position:var(--border-beam-position)_9400%] before:bg-[position:var(--border-beam-position)_9500%] before:bg-[position:var(--border-beam-position)_9600%] before:bg-[position:var(--border-beam-position)_9700%] before:bg-[position:var(--border-beam-position)_9800%] before:bg-[position:var(--border-beam-position)_9900%] before:bg-[position:var(--border-beam-position)_10000%]",
+        className
+      )}
+      style={{
+        "--border-beam-size": `${size}px`,
+        "--border-beam-position": "0%",
+        "--border-beam-duration": `${duration}s`,
+        "--border-beam-delay": `${delay}s`,
+      } as React.CSSProperties}
+    />
+  );
+}; 
