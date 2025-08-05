@@ -1,14 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, CheckIcon, StarIcon, ArrowRightIcon, PlayIcon, } from "@heroicons/react/24/outline";
 import { useState, useRef, useEffect, MutableRefObject } from "react";
 
 import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { LampContainer } from "./components/ui/lamp";
 import { ZapIcon } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
+import { CodeAnalysisFeatures } from "./components/code-analysis-features";
+import { CodeAnalysisShowcase } from "./components/code-analysis-showcase";
 
 // Animation container component similar to linkify
 const AnimationContainer = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -336,21 +341,21 @@ export default function Home() {
                     for Your Company
                   </h1>
                   <p className="mb-12 text-lg tracking-tight text-muted-foreground md:text-xl text-balance">
-                    Mistri uses Agentic AI to analyze, visualize, and optimize your code and cloud systems.
+                    Mistri uses Agentic AI to analyze, visualize, and optimize your codebases.
                     <br className="hidden md:block" />
                     <span className="hidden md:block">Transform complex tech stacks into clear, actionable insights in seconds.</span>
                   </p>
                   <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50">
-                    <a
-                      href="#waitlist"
+                    <Link
+                      href="/waitlist"
                       className=" group relative inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center">
                         Join Waitlist
                         <ArrowRightIcon className="w-4 h-4 ml-2" />
                       </span>
-                    </a>
-                    <a
+                    </Link>
+                    {/* <a
                       href="#beta"
                       className="group relative inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 overflow-hidden"
                     >
@@ -361,7 +366,7 @@ export default function Home() {
                       className=" group relative inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 overflow-hidden"
                     >
                       <span className="relative z-10">Watch Demo</span>
-                    </a>
+                    </a> */}
                   </div>
                 </AnimationContainer>
 
@@ -374,7 +379,7 @@ export default function Home() {
                       delay={9}
                     />
                     <Image
-                      src="/assets/mistri_front.png"
+                      src="/assets/front-mistri.png"
                       alt="Dashboard"
                       width={1200}
                       height={1200}
@@ -392,7 +397,7 @@ export default function Home() {
 
         </div>
         {/* Companies Section */}
-        <MaxWidthWrapper>
+        {/* <MaxWidthWrapper>
           <AnimationContainer delay={0.4}>
             <div className="py-14">
               <div className="mx-auto px-4 md:px-8">
@@ -406,7 +411,6 @@ export default function Home() {
                   Trusted by the best in the industry
                 </motion.h2>
 
-                {/* Infinite Scrolling Marquee */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -425,7 +429,6 @@ export default function Home() {
                     }}
                     className="flex items-center gap-8 whitespace-nowrap"
                   >
-                    {/* Duplicate companies 3 times to ensure smooth infinite loop */}
                     {[...COMPANIES, ...COMPANIES, ...COMPANIES].map((company, idx) => (
                       <motion.div
                         key={`${company.name}-${idx}`}
@@ -462,9 +465,9 @@ export default function Home() {
               </div>
             </div>
           </AnimationContainer>
-        </MaxWidthWrapper>
+        </MaxWidthWrapper> */}
         {/* Demo Video Section */}
-        <AnimatedSection
+        {/* <AnimatedSection
           className="py-8 sm:py-12 md:py-16 px-2 sm:px-4 lg:px-8 min-h-screen flex items-center justify-center bg-black overflow-hidden"
         >
           <div className="max-w-6xl p-2 sm:p-4 md:p-6 mx-auto text-center w-full">
@@ -495,7 +498,7 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
 
         {/* Stats Section */}
         {/* <AnimatedSection
@@ -519,823 +522,17 @@ export default function Home() {
           </div>
         </AnimatedSection>  */}
 
+        
         {/* Features Section */}
-        <AnimatedSection
-          className="py-16 flex items-center justify-center px-4 sm:px-6 lg:px-16 bg-black"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={item}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, margin: "-100px" }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-6xl font-bold text-white mb-4">
-                What does Mistri do?
-              </h2>
-              <p className="text-lg text-neutral-400 max-w-3xl mx-auto">
-                Mistri is your all-in-one agentic AI platform that revolutionizes how you analyze, visualize, and optimize your entire tech stack.
-              </p>
-            </motion.div>
+  
+        {/* Code Analysis Features Section */}
+        {/* <CodeAnalysisFeatures /> */}
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, margin: "-100px" }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
-              {/* Integration Hub */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Unified Integration Hub</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Connect all your platforms - GitHub, GitLab, Bitbucket, AWS, Azure, GCP - in one unified dashboard.
-                </p>
-              </motion.div>
+        {/* Code Analysis Showcase Section */}
 
-              {/* AI Pattern Detection */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Design Pattern Detection</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Advanced AI detects design patterns and provides intelligent suggestions directly in your PRs.
-                </p>
-              </motion.div>
 
-              {/* Architecture Comparison */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Architecture Evolution</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Compare old vs current architecture with AI-powered cognitive analysis for better decisions.
-                </p>
-              </motion.div>
-
-              {/* User Experience */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Intuitive Experience</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Simple, smooth platform focused on effortless user interaction and seamless workflows.
-                </p>
-              </motion.div>
-
-              {/* Cost Optimization */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Automated Cost Analysis</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Track, analyze, and optimize cloud deployment costs with automated flow integration.
-                </p>
-              </motion.div>
-
-              {/* Design Solutions */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Complete Design Solutions</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Get both High-level and Low-level design analysis for your engineering solutions.
-                </p>
-              </motion.div>
-
-              {/* Time Saving */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Time-Saving</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Save countless hours by accessing all your favorite tech platforms from one central hub.
-                </p>
-              </motion.div>
-
-              {/* Custom LLM APIs */}
-              <motion.div
-                variants={item}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#111111] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:shadow-xl transition-all duration-300 group"
-              >
-                <motion.div
-                  className="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-3">Flexible AI Integration</h3>
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Use your own LLM APIs or leverage our premium advanced AI models for deeper analysis.
-                </p>
-
-              </motion.div>
-              {/* Additional highlight banner */}
-
-            </motion.div>
-            <motion.div
-              variants={item}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, margin: "-50px" }}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="mt-12 bg-gradient-to-br from-purple-900 via-black to-purple-900 rounded-2xl p-8 text-center"
-            >
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-2xl font-bold text-white mb-3"
-              >
-                Everything you need, all in one place
-              </motion.h3>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-blue-100 max-w-2xl mx-auto"
-              >
-                Mistri brings together code analysis, cloud optimization, and AI-powered insights into a single, beautiful platform that scales with your team.
-              </motion.p>
-            </motion.div>
-          </div>
-        </AnimatedSection>
-
-        {/* Use Cases Section */}
-        <AnimatedSection
-          id="features"
-          className="py-16 px-4 sm:px-6 flex items-center justify-center lg:px-16 bg-black"
-        >
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-            className="max-w-7xl mx-auto"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                AI Software Architect for Modern Companies
-              </h2>
-              <p className="text-lg lg:text-xl text-neutral-400 max-w-4xl mx-auto leading-relaxed">
-                Transform your company's software architecture with AI-powered insights. Mistri's intelligent platform helps enterprises design, analyze, and optimize their entire tech infrastructure from a single, intelligent dashboard.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-              className="grid lg:grid-cols-3 gap-8 mb-12"
-            >
-              {/* Enterprise Companies Card */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[#111111] p-8 rounded-3xl shadow-lg border border-neutral-800 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mb-6">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">For Enterprise Companies</h3>
-                  <p className="text-neutral-300 mb-6 leading-relaxed">
-                    Scale your architecture decisions with AI-powered enterprise insights. Get comprehensive analysis of multi-cloud deployments, legacy system modernization, and strategic technology planning.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      "Multi-cloud architecture optimization",
-                      "Legacy system modernization analysis", 
-                      "Enterprise-wide cost optimization",
-                      "Compliance & security assessment"
-                    ].map((feature, idx) => (
-                      <motion.li 
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.3, delay: 0.1 * idx }}
-                        className="flex items-center text-sm text-neutral-300"
-                      >
-                        <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="font-medium">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Startup Companies Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-[#111111] p-8 rounded-3xl shadow-lg border border-neutral-800 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center mb-6">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">For Startup Companies</h3>
-                  <p className="text-neutral-300 mb-6 leading-relaxed">
-                    Build scalable foundations from day one with AI-guided architecture decisions. Get rapid prototyping insights, technology stack recommendations, and growth-ready infrastructure planning.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      "Rapid architecture prototyping",
-                      "Technology stack optimization",
-                      "Scalable infrastructure planning",
-                      "MVP to production guidance"
-                    ].map((feature, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.3, delay: 0.1 * idx }}
-                        className="flex items-center text-sm text-neutral-300"
-                      >
-                        <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="font-medium">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Tech Consulting Companies Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="bg-[#111111] p-8 rounded-3xl shadow-lg border border-neutral-800 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-2xl flex items-center justify-center mb-6">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">For Tech Consulting Firms</h3>
-                  <p className="text-neutral-300 mb-6 leading-relaxed">
-                    Deliver superior client solutions with AI-enhanced architecture consulting. Provide data-driven recommendations, comparative analysis, and strategic technology roadmaps for your clients.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      "Client architecture assessments",
-                      "Comparative technology analysis",
-                      "Strategic roadmap planning",
-                      "ROI & performance optimization"
-                    ].map((feature, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.3, delay: 0.1 * idx }}
-                        className="flex items-center text-sm text-neutral-300"
-                      >
-                        <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="font-medium">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* AI Architecture Banner */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-              className="rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden"
-            >
-              <div className="relative z-10">
-                <h3 className="text-2xl lg:text-4xl font-bold text-white mb-4">
-                  AI-Powered Architecture Intelligence
-                </h3>
-                <p className="text-lg text-blue-100 max-w-4xl mx-auto mb-8 leading-relaxed">
-                  Stop making architecture decisions in the dark. With Mistri's AI software architect, design, analyze, and optimize your company's entire tech infrastructure from one intelligent platform. Make data-driven decisions, reduce technical debt, and scale with confidence while AI handles the complex analysis.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4 text-sm">
-                  {[
-                    "🏗️ Intelligent Architecture Design",
-                    "📊 Data-Driven Decisions",
-                    "⚡ Rapid Analysis & Insights",
-                    "🔗 Enterprise Integration"
-                  ].map((badge, idx) => (
-                    <motion.span
-                      key={idx}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 0.3, delay: 0.1 * idx }}
-                      className="bg-white/20 text-white px-4 py-2 rounded-full backdrop-blur"
-                    >
-                      {badge}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </AnimatedSection>
-
-        {/* Testimonials Section */}
-        <AnimatedSection
-          id="integrations"
-          className="py-20 px-4 sm:px-6 lg:px-16  relative overflow-hidden"
-        >
-          {/* Background decorative elements */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"
-          ></motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
-            className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"
-          ></motion.div>
-
-          <div className="max-w-7xl mx-auto relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-center mb-20"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur"
-              >
-                <motion.div
-                  initial={{ rotate: 0 }}
-                  whileInView={{ rotate: 360 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 1, delay: 0.6 }}
-                >
-                  <StarIcon className="w-4 h-4 fill-current" />
-                </motion.div>
-                Customer Stories
-              </motion.div>
-
-              <motion.h2
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-              >
-                Trusted by top engineering teams worldwide
-              </motion.h2>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                className="flex items-center justify-center gap-2 mb-4"
-              >
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    viewport={{ once: false }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.8 + i * 0.1,
-                      type: "spring",
-                      stiffness: 200
-                    }}
-                  >
-                    <StarIcon className="w-6 h-6 text-yellow-400 fill-current drop-shadow-sm" />
-                  </motion.div>
-                ))}
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 1.3 }}
-                className="text-lg text-blue-100 font-medium"
-              >
-                4.9/5 from 200+ reviews • Trusted by engineering teams worldwide
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={container}
-              className="grid lg:grid-cols-3 gap-8"
-            >
-              {testimonials.map((testimonial, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={item}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="group relative"
-                >
-                  <div className="bg-[#111111]/50 p-8 rounded-3xl shadow-lg border border-neutral-800 hover:shadow-2xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm">
-                    {/* Gradient overlay */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-blue-100/50 rounded-3xl"
-                    ></motion.div>
-
-                    {/* Quote icon */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 0.5, scale: 1 }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 0.5, delay: 0.3 + idx * 0.2 }}
-                      className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-2xl flex items-center justify-center"
-                    >
-                      <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                      </svg>
-                    </motion.div>
-
-                    <div className="relative z-10">
-                      {/* Star rating */}
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.5, delay: 0.4 + idx * 0.2 }}
-                        className="flex gap-1 mb-6"
-                      >
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{
-                              duration: 0.3,
-                              delay: 0.5 + idx * 0.2 + i * 0.05,
-                              type: "spring"
-                            }}
-                          >
-                            <StarIcon className="w-4 h-4 text-yellow-400 fill-current" />
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* Quote */}
-                      <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.6, delay: 0.6 + idx * 0.2 }}
-                        className="text-neutral-300 leading-relaxed text-lg mb-8 font-medium"
-                      >
-                        "{testimonial.quote}"
-                      </motion.p>
-
-                      {/* Profile */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.6, delay: 0.8 + idx * 0.2 }}
-                        className="flex items-center gap-4"
-                      >
-                        <div className="relative">
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{
-                              duration: 0.4,
-                              delay: 0.9 + idx * 0.2,
-                              type: "spring",
-                              stiffness: 200
-                            }}
-                            className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg"
-                          >
-                            <img
-                              src={testimonial.avatar}
-                              alt={testimonial.name}
-                              className="w-10 h-10 rounded-xl bg-white object-contain"
-                            />
-                          </motion.div>
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{
-                              duration: 0.3,
-                              delay: 1.1 + idx * 0.2,
-                              type: "spring"
-                            }}
-                            className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white shadow-sm"
-                          ></motion.div>
-                        </div>
-                        <div>
-                          <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.4, delay: 1.0 + idx * 0.2 }}
-                            className="font-bold text-white text-lg"
-                          >
-                            {testimonial.name}
-                          </motion.div>
-                          <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.4, delay: 1.1 + idx * 0.2 }}
-                            className="text-neutral-400 font-medium"
-                          >
-                            {testimonial.role}
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Bottom CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8, delay: 1.5 }}
-              className="text-center mt-16"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-2xl shadow-lg border border-white/30 cursor-pointer"
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.6, delay: 1.7 }}
-                  className="flex -space-x-2"
-                >
-                  {testimonials.map((_, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ scale: 0, x: 20 }}
-                      whileInView={{ scale: 1, x: 0 }}
-                      viewport={{ once: false }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 1.8 + idx * 0.1,
-                        type: "spring"
-                      }}
-                      className="w-8 h-8 bg-gradient-to-br from-white to-blue-200 rounded-full border-2 border-white shadow-sm"
-                    ></motion.div>
-                  ))}
-                </motion.div>
-                <motion.span
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.5, delay: 2.1 }}
-                  className="text-white font-medium"
-                >
-                  Join 500+ teams already using Mistri
-                </motion.span>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.5, delay: 2.3 }}
-                  whileHover={{ x: 5 }}
-                >
-                  <ArrowRightIcon className="w-4 h-4 text-white" />
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </AnimatedSection>
-
-        {/* Pricing Section */}
-        <AnimatedSection
-          id="pricing"
-          className="py-16 px-4 sm:px-6 lg:px-16 bg-black"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="max-w-7xl mx-auto"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Simple, transparent pricing
-              </h2>
-              <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
-                Start free, scale as you grow. No hidden fees, no surprises.
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {pricingPlans.map((plan, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                  className={`bg-[#111111] p-8 rounded-2xl border-2 relative ${plan.highlight
-                      ? 'border-blue-500 shadow-xl scale-105'
-                      : 'border-neutral-800 shadow-sm'
-                    }`}
-                >
-                  {plan.highlight && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
-                    <div className="text-3xl font-bold text-white mb-2">{plan.price}</div>
-                    <p className="text-neutral-400 text-sm">{plan.description}</p>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, featureIdx) => (
-                      <motion.li
-                        key={featureIdx}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.3, delay: 0.4 + featureIdx * 0.1 }}
-                        className="flex items-center text-sm"
-                      >
-                        <CheckIcon className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-neutral-300">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  <motion.button
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                    className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${plan.highlight
-                        ? 'bg-blue-600 text-white hover:bg-blue-700'
-                        : 'bg-neutral-800 text-white hover:bg-neutral-700'
-                      }`}
-                  >
-                    {plan.cta}
-                  </motion.button>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatedSection>
         {/* FAQ Section */}
-        <AnimatedSection className="py-16 px-4 sm:px-6 lg:px-16 bg-black">
+        {/* <AnimatedSection className="py-16 px-4 sm:px-6 lg:px-16 bg-black">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1399,16 +596,15 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
         {/* CTA Section */}
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="py-16 sm:py-20 px-4 sm:px-6 lg:px-16 bg-gradient-to-br from-black via-gray-900 to-black relative   inset-0 bg-[linear-gradient(to_right,rgb(38,38,38,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.3)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none overflow-hidden"
         >
-          {/* Background decorative elements */}
           <div className="absolute"></div>
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -1502,10 +698,10 @@ export default function Home() {
               14-day free trial • No credit card required • Setup in 5 minutes
             </motion.p>
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Waitlist Section */}
-        <AnimatedSection
+        {/* <AnimatedSection
           id="waitlist"
           className="py-20 px-4 sm:px-6 lg:px-16 bg-black relative overflow-hidden"
         >
@@ -1536,10 +732,10 @@ export default function Home() {
                 placeholder="Enter your email address"
                 className="px-6 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 max-w-md"
               />
-              <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-neutral-100 transition-colors duration-200 flex items-center gap-2">
+              <Link href="/waitlist" className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-neutral-100 transition-colors duration-200 flex items-center gap-2">
                 Join Waitlist
                 <ZapIcon className="w-4 h-4 text-orange-500 fill-orange-500" />
-              </button>
+              </Link>
             </motion.div>
 
             <motion.p
@@ -1552,134 +748,10 @@ export default function Home() {
               No spam, ever. Unsubscribe at any time.
             </motion.p>
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
 
         {/* Footer */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-br from-black via-gray-900 to-black text-white py-20 px-4 sm:px-6 lg:px-16 relative overflow-hidden"
-        >
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(38,38,38,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.3)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none"></div>
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid md:grid-cols-4 gap-12 mb-12">
-              <div className="md:col-span-1">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
-                >
-                  Mistri
-                </motion.div>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="text-white/80 mb-6 leading-relaxed"
-                >
-                  Your AI co-pilot for tech stack analysis and optimization. Transform complex systems into clear insights.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex gap-4"
-                >
-                  <a href="#" className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                  </a>
-                </motion.div>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <h4 className="font-bold text-white mb-6 text-lg">Product</h4>
-                <ul className="space-y-4">
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Features</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Integrations</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">API</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Security</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Pricing</a></li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h4 className="font-bold text-white mb-6 text-lg">Company</h4>
-                <ul className="space-y-4">
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">About</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Blog</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Careers</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Contact</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Press</a></li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <h4 className="font-bold text-white mb-6 text-lg">Resources</h4>
-                <ul className="space-y-4">
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Documentation</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Help Center</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Status</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Privacy</a></li>
-                  <li><a href="#" className="text-white/70 hover:text-white hover:opacity-100 transition-all duration-300 hover:translate-x-1 inline-block cursor-pointer">Support</a></li>
-                </ul>
-              </motion.div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center"
-            >
-              <p className="text-white/60 text-sm">
-                © 2024 Mistri. All rights reserved.
-              </p>
-              <div className="flex gap-6 text-sm text-white/60 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white hover:opacity-100 transition-all duration-300 hover:scale-105 cursor-pointer">Terms</a>
-                <a href="#" className="hover:text-white hover:opacity-100 transition-all duration-300 hover:scale-105 cursor-pointer">Privacy</a>
-                <a href="#" className="hover:text-white hover:opacity-100 transition-all duration-300 hover:scale-105 cursor-pointer">Cookies</a>
-              </div>
-            </motion.div>
-          </div>
-        </motion.footer>
+        <Footer />
       </main>
     </div>
   );

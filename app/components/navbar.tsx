@@ -44,7 +44,7 @@ const Navbar = () => {
                     <div className="flex items-center space-x-12">
                         <Link href="/#home">
                             <span className="text-lg font-bold font-heading !leading-none text-white">
-                                Mistri
+                                MISTRI
                             </span>
                         </Link>
 
@@ -66,13 +66,13 @@ const Navbar = () => {
 
                     <div className="hidden lg:flex items-center">
                         <div className="flex items-center gap-x-4">
-                            <Link href="#waitlist" className="text-neutral-400 hover:text-white transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium">
+                            <Link href="/waitlist" className="text-neutral-400 hover:text-white transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium">
                                 Join Waitlist
                             </Link>
-                            <Link href="#waitlist" className="bg-white text-black hover:bg-neutral-100 transition-colors duration-200 px-4 py-2 rounded-md text-sm font-medium flex items-center gap-1.5">
+                            {/* <Link href="/waitlist" className="bg-white text-black hover:bg-neutral-100 transition-colors duration-200 px-4 py-2 rounded-md text-sm font-medium flex items-center gap-1.5">
                                 Get Started
                                 <ZapIcon className="size-3.5 text-orange-500 fill-orange-500" />
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
 

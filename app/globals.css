@@ -211,6 +211,23 @@ html, body, main {
   }
 }
 
+/* Move Animation for Code Analysis Card */
+@keyframes move {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-move {
+  animation: move 2s ease-in-out infinite;
+}
+
 @keyframes spark-trail {
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(0deg);

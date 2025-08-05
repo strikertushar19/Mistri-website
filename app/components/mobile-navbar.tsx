@@ -40,10 +40,10 @@ const MobileNavbar = () => {
                     </SheetClose>
                     <div className="flex flex-col items-start w-full py-2 mt-10">
                         <div className="flex items-center justify-evenly w-full space-x-2">
-                            <Link href="#waitlist" className={buttonVariants({ className: "w-full border-gray-300 text-gray-700 hover:bg-white font-bold" })}>
+                            <Link href="/waitlist" className={buttonVariants({ className: "w-full border-gray-300 text-gray-700 hover:bg-white font-bold" })}>
                                 Join Waitlist
                             </Link>
-                            <Link href="#waitlist" className={buttonVariants({ className: "w-full bg-blue-600 text-black hover:bg-blue-700" })}>
+                            <Link href="/waitlist" className={buttonVariants({ className: "w-full bg-blue-600 text-black hover:bg-blue-700" })}>
                                 Get Started
                                 <ZapIcon className="size-3.5 ml-1.5 text-orange-500 fill-orange-500" />
                             </Link>
