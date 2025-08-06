@@ -3,6 +3,7 @@ import "@fontsource/inter/latin.css";
 import "@fontsource/poppins/latin.css";
 import "@fontsource/ibm-plex-sans/latin.css";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
       >
         <Navbar/>
         {children}
+        <Analytics />
       </body>
     </html>
   );
