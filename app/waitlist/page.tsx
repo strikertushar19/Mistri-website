@@ -5,7 +5,7 @@ import { ArrowLeftIcon, CheckIcon, StarIcon, UsersIcon, CodeBracketIcon, CloudIc
 import Link from "next/link";
 import { ZapIcon } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Footer from "../components/footer";
 
 // Animation container component
@@ -66,41 +66,47 @@ const features = [
 ];
 
 export default function WaitlistPage() {
+  const [formLoaded, setFormLoaded] = useState(false);
+  const typeformRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Load Typeform embed script
     const script = document.createElement('script');
-    script.src = '//embed.typeform.com/next/embed.js';
+    script.src = "//embed.typeform.com/next/embed.js";
     script.async = true;
     document.body.appendChild(script);
 
-    return () => {
-      // Cleanup script on component unmount
-      const existingScript = document.querySelector('script[src="//embed.typeform.com/next/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
+    // Check if iframe loaded every 500ms for 10s
+    const maxTries = 20;
+    let tries = 0;
+    const interval = setInterval(() => {
+      if (typeformRef.current?.querySelector("iframe")) {
+        setFormLoaded(true);
+        clearInterval(interval);
+      } else if (++tries >= maxTries) {
+        clearInterval(interval);
       }
+    }, 500);
+
+    return () => {
+      document.body.removeChild(script);
+      clearInterval(interval);
     };
   }, []);
 
   return (
     <div className="overflow-x-hidden scrollbar-hide size-full">
       <main className="overflow-y-auto h-screen scroll-smooth">
-        {/* Hero Section */}
         <AnimationContainer delay={0.2} className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 bg-black">
           <MaxWidthWrapper>
-            {/* Back Button */}
-            <AnimationContainer className="mb-8">
-              <Link 
-                href="/"
-                className="inline-flex items-center gap-2 text-neutral-400 hover:text-white transition-colors duration-200"
-              >
+            <AnimationContainer className="mb-8 mt-8">
+              <Link href="/" className="inline-flex items-center gap-2 text-neutral-400 hover:text-white transition-colors duration-200">
                 <ArrowLeftIcon className="w-4 h-4" />
                 Back to Home
               </Link>
             </AnimationContainer>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Form */}
+              {/* Typeform + Description */}
               <div className="order-2 lg:order-1">
                 <div className="relative inline-block mb-12">
                   <div className="relative text-xl text-neutral-100 bg-black border border-neutral-700 p-4 rounded-full backdrop-blur-sm">
@@ -116,12 +122,17 @@ export default function WaitlistPage() {
                   Mistri uses Agentic AI to analyze, visualize, and optimize your codebases. Transform complex tech stacks into clear, actionable insights in seconds.
                 </p>
 
-                {/* Typeform Embed */}
-                <div className="w-full ">
-                  <div 
+                <div className="w-full min-h-[300px] bg-neutral-900 rounded-xl border border-neutral-700 p-4">
+                  {!formLoaded && (
+                    <div className="text-neutral-400 text-center py-12">
+                      ⏳ Waitlist form is loading...
+                    </div>
+                  )}
+                  <div
+                    ref={typeformRef}
                     data-tf-live={process.env.NEXT_PUBLIC_TYPEFORM_ID}
-                    className="w-full "
-                  ></div>
+                    className={`transition-opacity duration-500 ${formLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  />
                 </div>
               </div>
 
@@ -155,51 +166,8 @@ export default function WaitlistPage() {
           </MaxWidthWrapper>
         </AnimationContainer>
 
-        <div className="relative w-full min-h-screen">
-          {/* Grid Pattern Background */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(38,38,38,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.5)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none -z-10"></div>
-          
-          <MaxWidthWrapper>
-            <div className="flex flex-col items-center justify-center w-full text-center bg-gradient-to-t from-background relative min-h-screen py-20 sm:py-32 lg:py-40">
-              <AnimationContainer className="flex flex-col items-center justify-center w-full text-center">
-              
-
-                <h1 className="text-foreground text-center py-6 text-4xl font-semibold tracking-normal text-balance sm:text-5xl md:text-6xl lg:text-8xl !leading-[1.15] w-full font-heading mb-8">
-                  <span
-                    className="text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-fuchsia-500 bg-clip-text inline-block animate-gradient-x"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(90deg, #8b5cf6, #3b82f6, #a21caf, #f472b6, #8b5cf6)",
-                      backgroundSize: "200% 200%",
-                      animation: "gradient-x 4s ease-in-out infinite",
-                    }}
-                  >
-                    Get Early Access
-                  </span>
-                </h1>
-
-                <p className="mb-12 text-lg tracking-tight text-muted-foreground md:text-xl lg:text-2xl text-balance max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
-                  Be among the first to experience the future of AI-powered software architecture. Join our exclusive waitlist for early access to Mistri's intelligent platform.
-                </p>
-              </AnimationContainer>
-            </div>
-          </MaxWidthWrapper>
-        </div>
-
-        {/* Footer */}
+        {/* ...rest of your code (CTA section, Footer, etc.) */}
         <Footer />
-
-        <style jsx>{`
-          @keyframes gradient-x {
-            0%,
-            100% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-          }
-        `}</style>
       </main>
     </div>
   );
